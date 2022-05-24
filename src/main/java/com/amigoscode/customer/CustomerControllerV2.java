@@ -10,28 +10,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.List;
 
-@RequestMapping(path = "api/v1/customer")
+@RequestMapping(path = "api/v2/customers")
 @RestController
-@Deprecated
-public class CustomerController {
+public class CustomerControllerV2 {
 
     private final CustomerService customerService;
 
     @Autowired
-    public CustomerController(CustomerService customerService) {
+    public CustomerControllerV2(CustomerService customerService) {
         this.customerService = customerService;
     }
 
-    @GetMapping(value = "all")
-    List<Customer> getCustomer() {
+    @GetMapping
+    List<Customer> getCustomers() {
         return customerService.getCustomers();
     }
 
     @GetMapping(path = "{customerId}")
     Customer getCustomer(@PathVariable("customerId") Long id) {
-        return customerService.getCustomer(id);
+        return customerService.getCustomers()
+                .stream()
+                .filter(customer -> customer.getId().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException("Customer not found"));
     }
 
     @PostMapping
