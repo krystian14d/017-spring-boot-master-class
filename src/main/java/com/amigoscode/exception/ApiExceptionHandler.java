@@ -23,7 +23,7 @@ public class ApiExceptionHandler {
         return new ResponseEntity<>(apiException, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(value = ApiRequestException.class)
+    @ExceptionHandler(value = NotFoundException.class)
     public ResponseEntity<Object> notFoundException(NotFoundException e){
 
         ApiException apiException = new ApiException(

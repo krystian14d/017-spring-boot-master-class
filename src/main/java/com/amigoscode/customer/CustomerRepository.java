@@ -1,14 +1,9 @@
 package com.amigoscode.customer;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public class CustomerRepository implements CustomerRepo {
+@Repository
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
-    @Override
-    public List<Customer> getCustomers() {
-        //TODO connect to real db
-        return List.of(
-                new Customer(1L, "TODO - implement real DB", "todo", "email@gmail.com")
-        );
-    }
 }
