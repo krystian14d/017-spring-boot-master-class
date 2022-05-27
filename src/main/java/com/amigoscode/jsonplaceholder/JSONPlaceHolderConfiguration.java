@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class JSONPlaceHolderConfiguration {
 
     @Bean("jsonplaceholder")
-    CommandLineRunner runner(JSONPlaceHolderClient jsonPlaceHolderClient){
+    CommandLineRunner runner(JSONPlaceHolderClient jsonPlaceHolderClient) {
         return args -> {
             System.out.println("https://jsonplaceholder.typicode.com/posts");
             System.out.println(jsonPlaceHolderClient.getPosts().size());
@@ -17,4 +17,5 @@ public class JSONPlaceHolderConfiguration {
             System.out.println(jsonPlaceHolderClient.getPost(1));
         };
     }
+
 }
