@@ -1,7 +1,6 @@
 package com.amigoscode.exception;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -9,13 +8,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.time.ZonedDateTime;
 
+@Slf4j
 @ControllerAdvice
 public class ApiExceptionHandler {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(ApiExceptionHandler.class);
-
     @ExceptionHandler(value = ApiRequestException.class)
-    public ResponseEntity<Object> handleApiRequestException(ApiRequestException e){
+    public ResponseEntity<Object> handleApiRequestException(ApiRequestException e) {
 
         ApiException apiException = new ApiException(
                 e.getMessage(),
@@ -28,7 +26,7 @@ public class ApiExceptionHandler {
     }
 
     @ExceptionHandler(value = NotFoundException.class)
-    public ResponseEntity<Object> notFoundException(NotFoundException e){
+    public ResponseEntity<Object> notFoundException(NotFoundException e) {
 
         ApiException apiException = new ApiException(
                 e.getMessage(),

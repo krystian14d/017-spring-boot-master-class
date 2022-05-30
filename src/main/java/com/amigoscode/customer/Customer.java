@@ -3,6 +3,7 @@ package com.amigoscode.customer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -17,6 +18,7 @@ import javax.validation.constraints.NotBlank;
 @Table
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class Customer {
 
     @Id

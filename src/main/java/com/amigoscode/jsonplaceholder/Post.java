@@ -1,12 +1,8 @@
 package com.amigoscode.jsonplaceholder;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.Data;
 
-@Getter
-@ToString
-@AllArgsConstructor
+@Data
 public class Post {
 
     private final Integer userId;
